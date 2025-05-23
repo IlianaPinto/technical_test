@@ -5,6 +5,6 @@ namespace service_api.Services
 {
     public interface IAuthService
     {
-        Task<LoginResponseDTO?> LoginAsync(LoginRequest request);
+        Task<LoginResponseDTO?> LoginAsync(LoginRequestDTO request);
     }
 }

@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿
 using Microsoft.AspNetCore.Mvc;
+using service_api.DTOs;
 using service_api.Services;
 
 namespace service_api.Controllers
@@ -16,10 +17,10 @@ namespace service_api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginRequest request)
+        public async Task<IActionResult> Login(LoginRequestDTO request)
         {
             var result = await _auth.LoginAsync(request);
-            if (result == null) return Unauthorized("Credenciales inválidas");
+            if (result == null) return Unauthorized("Incorrect username or password");
 
             return Ok(result);
         }

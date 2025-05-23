@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Plugins;
 using service_api.Configurations;
 using service_api.Context;
 using service_api.DTOs;
@@ -24,7 +22,7 @@ namespace service_api.Services
             _logger = logger;
         }
 
-        public async Task<LoginResponseDTO?> LoginAsync(LoginRequest request)
+        public async Task<LoginResponseDTO?> LoginAsync(LoginRequestDTO request)
         {
 
             _logger.LogInformation("Login attempt for user {email}",request.Email);
