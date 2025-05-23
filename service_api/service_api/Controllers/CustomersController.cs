@@ -19,7 +19,7 @@ namespace service_api.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
             var customers = await _service.GetAll();
@@ -28,7 +28,7 @@ namespace service_api.Controllers
         }
 
         [HttpGet("{id}")]
-        //[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var customer = await _service.GetById(id);
@@ -41,7 +41,7 @@ namespace service_api.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] CustomerCreateDTO dto)
         {
             var created = await _service.Create(dto);
@@ -50,7 +50,7 @@ namespace service_api.Controllers
         }
 
         [HttpPut("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(Guid id, [FromBody] CustomerUpdateDTO dto)
         {
             var updated = await _service.Update(id, dto);
@@ -65,7 +65,7 @@ namespace service_api.Controllers
         }
 
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var deleted = await _service.Delete(id);
