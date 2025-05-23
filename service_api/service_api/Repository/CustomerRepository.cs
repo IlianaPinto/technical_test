@@ -17,5 +17,28 @@ namespace service_api.Repository
         {
             return await _context.Customer.ToListAsync();
         }
+
+        public async Task<Customer?> GetById(Guid id)
+        {
+            return await _context.Customer.FindAsync(id);
+        }
+
+        public async Task Create(Customer customer)
+        {
+            await _context.Customer.AddAsync(customer);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(Customer customer)
+        {
+            _context.Customer.Update(customer);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(Customer customer)
+        {
+            _context.Customer.Remove(customer);
+            await _context.SaveChangesAsync();
+        }
     }
 }
