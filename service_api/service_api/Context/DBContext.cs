@@ -7,8 +7,9 @@ namespace service_api.Context
     {
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Order> Order { get; set; }
+        public DbSet<User> User { get; set; }
 
-        public DBContext(DbContextOptions<DbContext> options)
+        public DBContext(DbContextOptions<DBContext> options)
         : base(options)
         {
         }
