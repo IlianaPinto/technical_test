@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Editar Orden</h1>
+<div mat-dialog-content class="modal-content">
+  <form [formGroup]="form" class="form-body">
+    @for (input of data.inputs; track input.name) {
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>{{ input.label }}</mat-label>
+
+      @if (input.type === 'text' || input.type === 'number') {
+      <input matInput [type]="input.type" [formControlName]="input.name" />
+      } @else if (input.type === 'select') {
+      <mat-select [formControlName]="input.name">
+        @for (option of input.options ?? []; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-select>
+      } @else {
+      <span class="text-red-500">Tipo no soportado: {{ input.type }}</span>
+      }
+    </mat-form-field>
+    }
+  </form>
+</div>
+
+<div mat-dialog-actions align="end" class="modal-actions">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()">Guardar</button>
+</div>

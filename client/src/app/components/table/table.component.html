@@ -11,7 +11,7 @@
     <th mat-header-cell *matHeaderCellDef>{{ column.header }}</th>
     <td mat-cell *matCellDef="let element">
       <ng-container *ngIf="column.columnDef === 'actions'; else contenido">
-        <button mat-flat-button (click)="onEditar(element)">Editar</button>
+        <button mat-flat-button (click)="onEdit(element)">Editar</button>
       </ng-container>
       <ng-template #contenido>
         {{ column.cell(element) }}

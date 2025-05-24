@@ -27,14 +27,14 @@ import { MatButtonModule } from '@angular/material/button';
 export class DataTableComponent<T> {
   @Input() columns: any[] = [];
   @Input() dataSource!: MatTableDataSource<any>;
-  @Output() editar = new EventEmitter<any>();
+  @Output() edit = new EventEmitter<any>();
 
   get displayedColumns(): string[] {
     return this.columns.map((c) => c.columnDef);
   }
 
-  onEditar(element: any) {
-    this.editar.emit(element);
+  onEdit(element: any) {
+    this.edit.emit(element);
   }
 
   applyFilter(event: Event) {
