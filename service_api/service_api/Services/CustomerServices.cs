@@ -25,7 +25,8 @@ namespace service_api.Services
                 Id = c.Id,
                 Name = c.Name,
                 Email = c.Email,
-                PhoneNumber = c.PhoneNumber
+                PhoneNumber = c.PhoneNumber ?? "",
+                Date = c.Date.ToShortDateString()
             });
         }
 

@@ -8,5 +8,6 @@ namespace service_api.DTOs
         public string Name { get; set; } = default!;
         public string Email { get; set; }
         public string? PhoneNumber { get; set; }
+        public string Date { get; set; }
     }
 }
