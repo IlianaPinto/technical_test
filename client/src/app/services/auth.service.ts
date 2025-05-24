@@ -3,16 +3,16 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginCredentials, LoginResponse } from '../interfaces/auth.interface';
 
+const API_URL = 'http://localhost:5027/Auth';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5027/Auth';
-
   private http = inject(HttpClient);
 
   login(credentials: LoginCredentials): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials);
+    return this.http.post<LoginResponse>(`${API_URL}/login`, credentials);
   }
 
   saveToken(token: string): void {
