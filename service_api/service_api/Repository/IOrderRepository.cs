@@ -1,4 +1,5 @@
-﻿using service_api.Entities;
+﻿using service_api.DTOs;
+using service_api.Entities;
 
 namespace service_api.Repository
 {
@@ -9,5 +10,6 @@ namespace service_api.Repository
         Task Create(Order order);
         Task Update(Order order);
         Task Delete(Order order);
+        Task<IEnumerable<OrdersSummaryDTO>> GetOrderSummary();
     }
 }

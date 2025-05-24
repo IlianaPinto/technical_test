@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using service_api.DTOs;
 using service_api.Services;
@@ -77,6 +78,15 @@ namespace service_api.Controllers
 
             _logger.LogInformation("Order with ID {Id} deleted", id);
             return NoContent();
+        }
+
+        [HttpGet("summary/by-customer")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetOrderSummaryByCustomer()
+        {
+            var summary = await _service.GetOrderSummary();
+            _logger.LogInformation("Retrieved {count} order summary", summary.Count());
+            return Ok(summary);
         }
     }
 }

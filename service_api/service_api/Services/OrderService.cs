@@ -98,5 +98,11 @@ namespace service_api.Services
             _logger.LogInformation("Order with ID {Id} deleted", existing.Id);
             return true;
         }
+
+        public async Task<IEnumerable<OrdersSummaryDTO>> GetOrderSummary()
+        {
+            var summary = await _repo.GetOrderSummary();
+            return summary;
+        }
     }
 }

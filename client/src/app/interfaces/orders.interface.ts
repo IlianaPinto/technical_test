@@ -5,3 +5,11 @@ export interface Order {
   status: string;
   createdAt: string;
 }
+
+export interface OrderSummary {
+  customerId: string;
+  customerName: string;
+  totalOrders: number;
+  totalAmount: number;
+  lastOrderDate: Date;
+}

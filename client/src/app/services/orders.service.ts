@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Order } from '../interfaces/orders.interface';
+import { Order, OrderSummary } from '../interfaces/orders.interface';
 
 const API_URL = 'http://localhost:5027/Order';
 
@@ -20,6 +20,12 @@ export class OrdersService {
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(API_URL, {
+      headers: this.getAuthHeaders(),
+    });
+  }
+
+  getOrdersSummary(): Observable<OrderSummary[]> {
+    return this.http.get<OrderSummary[]>(`${API_URL}/summary/by-customer`, {
       headers: this.getAuthHeaders(),
     });
   }

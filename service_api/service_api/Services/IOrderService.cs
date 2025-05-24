@@ -9,5 +9,6 @@ namespace service_api.Services
         Task<OrderCreateDTO> Create(OrderCreateDTO dto);
         Task<OrderUpdateDTO?> Update(Guid id, OrderUpdateDTO dto);
         Task<bool> Delete(Guid id);
+        Task<IEnumerable<OrdersSummaryDTO>> GetOrderSummary();
     }
 }
