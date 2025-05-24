@@ -55,7 +55,13 @@ export class LoginComponent {
     this.authService.login(credentials).subscribe({
       next: (res: LoginResponse) => {
         this.authService.saveToken(res.token);
-        this.router.navigate(['/dashboard']);
+        this.authService.setUserRole(res.role);
+        console.log(this.authService.isUser());
+        if (this.authService.isAdmin()) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/dashboard-user']);
+        }
       },
       error: () => {
         this.error = 'Email o contraseña incorrectos.';

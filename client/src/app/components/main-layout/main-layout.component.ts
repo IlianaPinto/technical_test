@@ -25,8 +25,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class MainLayoutComponent {
   isExpanded = false;
+  isAdmin = false;
 
   private authService = inject(AuthService);
+
+  ngOnInit() {
+    this.isAdmin = this.authService.isAdmin();
+  }
 
   logout() {
     this.authService.logout();

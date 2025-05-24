@@ -6,23 +6,43 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { LoginGuard } from './guards/login.guard';
 import { OrdersComponent } from './components/orders/orders.component';
 import { CustomersComponent } from './components/customers/customers.component';
+import { AdminGuard } from './guards/admin.guard';
+import { UserGuard } from './guards/user.guard';
+import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [LoginGuard],
   },
   {
     path: '',
     component: MainLayoutComponent,
-    // canActivate: [AuthGuard],
+
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'pedidos', component: OrdersComponent },
-      { path: 'clientes', component: CustomersComponent },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'pedidos',
+        component: OrdersComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'clientes',
+        component: CustomersComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'dashboard-user',
+        canActivate: [UserGuard],
+        component: DashboardUserComponent,
+      },
     ],
   },
+
   {
     path: '**',
     redirectTo: '',

@@ -30,4 +30,19 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+
+  setUserRole(role: string) {
+    localStorage.setItem('role', role);
+  }
+
+  isAdmin(): boolean {
+    return localStorage.getItem('role') === 'Admin';
+  }
+
+  isUser(): boolean {
+    return localStorage.getItem('role') === 'User';
+  }
+}
+function jwtDecode(token: string): any {
+  throw new Error('Function not implemented.');
 }

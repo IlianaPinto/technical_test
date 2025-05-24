@@ -5,7 +5,7 @@ export interface LoginCredentials {
 
 export interface LoginResponse {
   token: string;
-  user: AuthUser;
+  role: string;
 }
 
 export interface AuthUser {

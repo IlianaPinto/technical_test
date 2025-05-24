@@ -20,7 +20,7 @@ namespace service_api.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
             var orders = await _service.GetAll();

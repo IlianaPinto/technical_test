@@ -13,3 +13,9 @@ export interface OrderSummary {
   totalAmount: number;
   lastOrderDate: Date;
 }
+
+export interface OrderUserSummary {
+  totalOrders: number;
+  totalAmount: number;
+  lastOrderDate: Date;
+}
