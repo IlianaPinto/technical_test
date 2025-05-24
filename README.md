@@ -17,7 +17,7 @@ Este proyecto es una prueba técnica desarrollada con .NET 8.0 para el backend y
 - JWT para autenticación
 - Swagger para documentación de API
 
-### ** Frontend **
+### **Frontend**
 
 - Angular 19
 - Angular Material
