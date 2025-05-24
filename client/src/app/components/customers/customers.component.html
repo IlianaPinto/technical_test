@@ -1,2 +1,8 @@
-<button mat-flat-button>Agregar Cliente</button><br /><br />
-<app-table [dataSource]="customers" [columns]="columns"> </app-table>
+<button mat-flat-button (click)="openModal($event)">Agregar Cliente</button
+><br /><br />
+<app-table
+  [dataSource]="customers"
+  [columns]="columns"
+  (edit)="openModal($event)"
+>
+</app-table>

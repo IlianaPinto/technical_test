@@ -4,6 +4,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Customer } from '../../interfaces/customer.interface';
 import { DataTableComponent } from '../table/table.component';
 import { MatButtonModule } from '@angular/material/button';
+import { InputForm } from '../../interfaces/input-form.interface';
+import { ModalComponent } from '../modal/modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-customers',
@@ -37,12 +40,47 @@ export class CustomersComponent {
       cell: (element: any) => `${element.date}`,
     },
   ];
-  constructor(private customersService: CustomersService) {}
+  constructor(
+    private customersService: CustomersService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
+    this.loadCustomers();
+  }
+
+  loadCustomers() {
     this.customersService.getCustomers().subscribe({
       next: (data) => (this.customers.data = data),
       error: () => console.error('Error al cargar los clientes'),
     });
+  }
+
+  openModal(event: any): void {
+    const inputs: InputForm[] = [
+      { name: 'name', type: 'text', label: 'Nombre' },
+      { name: 'email', type: 'text', label: 'Email' },
+      { name: 'phoneNumber', type: 'number', label: 'Numero de Telefono' },
+    ];
+
+    this.dialog
+      .open(ModalComponent, {
+        width: '400px',
+        height: '500px',
+        data: { inputs, event },
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          console.log('Resultado del formulario:', result);
+          this.customersService.createCustomer(result).subscribe({
+            next: (response) => {
+              console.log('Cliente creado:', response);
+              this.loadCustomers();
+            },
+            error: (err) => console.error('Error al actualizar:', err),
+          });
+        }
+      });
   }
 }
