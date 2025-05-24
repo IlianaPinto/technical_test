@@ -22,6 +22,7 @@ namespace service_api.Services
             {
                 Id = o.Id,
                 CustomerId = o.CustomerId,
+                CustomerName = o.Customer.Name,
                 OrderDate = o.OrderDate,
                 Status = o.Status,
                 Total = o.Total
@@ -36,7 +37,7 @@ namespace service_api.Services
             return new OrderDTO
             {
                 Id = order.Id,
-                CustomerId = order.CustomerId,
+                CustomerName = order.Customer.Name,
                 OrderDate = order.OrderDate,
                 Status = order.Status,
                 Total = order.Total

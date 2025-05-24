@@ -12,7 +12,6 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class OrdersComponent implements OnInit {
   orders = new MatTableDataSource<Order>();
-  columns = ['Id', 'Nombre Cliente', 'Monto', 'Status', ' '];
 
   constructor(private ordersService: OrdersService) {}
 

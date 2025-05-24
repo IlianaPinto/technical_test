@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '../interfaces/orders.interface';
 
-const API_URL = 'http://localhost:5027/Auth';
+const API_URL = 'http://localhost:5027/Order';
 
 @Injectable({
   providedIn: 'root',

@@ -16,7 +16,7 @@ namespace service_api.Repository
 
         public async Task<IEnumerable<Order>> GetAll()
         {
-            return await _context.Order.ToListAsync();
+            return await _context.Order.Include(o => o.Customer).ToListAsync();
         }
 
         public async Task<Order?> GetById(Guid id)

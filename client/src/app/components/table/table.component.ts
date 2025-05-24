@@ -13,7 +13,30 @@ import { CommonModule } from '@angular/common';
 })
 export class DataTableComponent<T> {
   @Input() dataSource!: MatTableDataSource<T>;
-  @Input() displayedColumns: string[] = [];
+  columns = [
+    { columnDef: 'id', header: 'id', cell: (element: any) => `${element.id}` },
+    {
+      columnDef: 'customerName',
+      header: 'Nombre',
+      cell: (element: any) => `${element.customerName}`,
+    },
+    {
+      columnDef: 'total',
+      header: 'Monto',
+      cell: (element: any) => `${element.total}`,
+    },
+    {
+      columnDef: 'status',
+      header: 'Status',
+      cell: (element: any) => `${element.status}`,
+    },
+    {
+      columnDef: 'actions',
+      header: 'Acciones',
+      cell: () => '',
+    },
+  ];
+  displayedColumns: string[] = this.columns.map((c) => c.columnDef);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
