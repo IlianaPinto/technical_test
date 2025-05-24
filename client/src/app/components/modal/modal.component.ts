@@ -39,7 +39,6 @@ export class ModalComponent {
       grupo[input.name] = [input.value || ''];
     });
     this.form = this.fb.group(grupo);
-    console.log('data ', this.data);
 
     this.form = this.fb.group(
       Object.fromEntries(

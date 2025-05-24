@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -24,6 +25,12 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class MainLayoutComponent {
   isExpanded = false;
+
+  private authService = inject(AuthService);
+
+  logout() {
+    this.authService.logout();
+  }
 
   toggleSidenav() {
     this.isExpanded = !this.isExpanded;

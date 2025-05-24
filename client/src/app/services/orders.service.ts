@@ -43,7 +43,6 @@ export class OrdersService {
   }
 
   updateOrder(id: number, order: Partial<Order>): Observable<Order> {
-    console.log('holaa?', id, order);
     return this.http.put<Order>(`${API_URL}/${id}`, order, {
       headers: this.getAuthHeaders(),
     });
