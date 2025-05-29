@@ -6,8 +6,6 @@ Este proyecto es una prueba técnica desarrollada con .NET 8.0 para el backend y
 
 ## **Tecnologías utilizadas**
 
-Este proyecto es una prueba técnica desarrollada con .NET 8.0 para el backend y Angular 19 para el frontend. La aplicación permite gestionar productos y órdenes.
-
 ### **Backend**
 
 - ASP.NET Core 8.0
